@@ -2,11 +2,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const url = 'https://restcountries.com/v3.1/all';
-
+//
+//
 const initialState = {
-  countries: [
-  ],
-
+  countryList: [],
 };
 
 export const getCountriesData = createAsyncThunk(
@@ -22,16 +21,14 @@ export const getCountriesData = createAsyncThunk(
 );
 
 const countriesSlice = createSlice({
-  name: 'countries',
+  name: 'country',
   initialState,
   reducers: {
   },
 
   extraReducers: {
     [getCountriesData.fulfilled]:
-    (state, { payload }) => ({
-      payload,
-    })
+    (state, { payload }) => ({ countryList: payload })
     ,
   },
 });

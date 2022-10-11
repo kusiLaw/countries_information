@@ -1,12 +1,9 @@
-import { useSelector } from 'react-redux';
 import './App.css';
+import Countries from './Components/Countries';
 
 function App() {
-  const countries = useSelector((state) => state.countries);
-  console.log(countries);
-
   return (
-    <div className="App" />
+    <Countries />
   );
 }
 
