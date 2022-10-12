@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { getCountriesData } from '../Redux/countries/countries';
-import { arrowRight, arrowLeft } from './icons';
-import './style/countryList.css';
+import Dropdown from './Dropdownfilter';
 
 const Countries = () => {
   const countries = useSelector((state) => state.countries.countryList);
@@ -23,12 +23,17 @@ const Countries = () => {
   console.log(cache);
   return (
     <div className="list-container">
+      <div className="drop-list">
+        <Dropdown />
+      </div>
       <ul className="country-list d-flex">
         {countries.map((country) => (
           <li className="d-flex" key={country.name.common.replace(/\s+/gi, '-')}>
             <div className="list-header d-flex">
               <div className="arrow-link d-flex">
-                <FaArrowAltCircleRight />
+                <Link to={`/countries/${country.name.common.replace(/\s+/gi, '-')}/details`}>
+                  <FaArrowAltCircleRight />
+                </Link>
               </div>
               <h2>
                 {country.name.common}

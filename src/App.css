@@ -14,6 +14,8 @@ body {
   font-family: Montserrat, Roboto, sans-serif;
   min-width: 32rem;
   font-size: 1.6rem;
+  background-color:var(--primary-light-color) ;
+
 }
 
 /* reset settings for all browser */
@@ -29,12 +31,29 @@ body {
  display: flex;
 }
 
+.list-container{
+ padding: 2rem 4rem;
+}
+
+.drop-list{
+margin-left: 2rem;
+}
+
+.select_options{
+ padding: 0.5rem 4rem;
+
+
+}
+.select_options,option{
+color: white;
+background-color:var(--primary-light-color) ;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;}
+
 .country-list{
  flex-wrap: wrap;
  flex: 1 1 50%;
  padding: 2rem;
  list-style-type: none;
- background-color:var(--primary-light-color) ;
  color: white;
 }
 
