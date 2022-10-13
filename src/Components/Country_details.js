@@ -33,10 +33,9 @@ const CountryDetails = () => {
              {' '}
             {/* </span> */}
             <span>
-              Official :
               {' '}
               {' '}
-              {el.officialName}
+              {el.region}
             </span>
           </h1>
          </div>
@@ -45,10 +44,10 @@ const CountryDetails = () => {
           <h2>Detailed Information</h2>
           <div className="details-body-wrapper d-flex">
             <ul className="details">
-             <li key="el.continents">
+             {/* <li key="el.continents">
                <p> Continents </p>
                <p>{el.continents || 'unknown'}</p>
-             </li>
+             </li> */}
 
               <li key="el.timezone">
                <p> timezone </p>

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const detailsUrl = 'https://restcountries.com/v3.1/name/';
+const detailsUrl = 'https://restcountries.com/v2/name/';
 
 const initialState = {
   countryDetails: [],
@@ -29,11 +29,11 @@ const detailsSlice = createSlice({
     [getDetails.fulfilled]:
     (state, { payload }) => ({
       countryDetails: payload.map((el) => ({
-        name: el.name.common,
-        officialName: el.name.official,
+        name: el.name,
+        // officialName: el.name.official,
         capital: el.capital,
         timezone: el.timezones,
-        continents: el.continents,
+        region: el.region,
         population: el.population,
         flag: el.flags.png,
         independent: el.independent,
