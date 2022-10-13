@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector ,useDispatch} from 'react-redux';
 import { getCountriesData } from '../Redux/countries/countries';
 import './style/countryDetails.css'
-
+// import Home from './style/map';
 const CountryDetails = () => {
   const { name } = useParams();
   const countries = useSelector((state) => state.countries.countryList);
@@ -19,7 +19,7 @@ const CountryDetails = () => {
  const filterCountry = () => countries.filter((el) => (el.name.common.replace(/\s+/gi, '-') === name));
 
 
-  const renderDetails = () => filterCountry().map((el) => (
+  const renderDetails = () => filterCountry().map((el, index) => (
     <>
       <div className = 'details-wrapper'>
         <h1>
@@ -35,19 +35,19 @@ const CountryDetails = () => {
           <div className='details-body-wrapper d-flex'>
            <div className='details d-flex-col'>
              <h3>Details</h3>
-             <p>
+             <p key={'ind'}>
                Has independent :
                {el.independent ? 'Yes' : 'No'}
              </p>
-             <p>
+             <p key={'un'}>
                UN member :
-               {el.independent ? 'Yes' : 'No'}
+               {el.unMember ? 'Yes' : 'No'}
              </p>
-             <p>
+             <p key={'el.capital'}>
                Capital City :
                {el.capital[0] || 'unknown'}
              </p>
-             <p>
+             <p key={'cur'}>
                Currencies :
                {el.currencies.name}
                <span> '&quot'
@@ -55,27 +55,23 @@ const CountryDetails = () => {
                 '&quot'</span>
       
              </p>
-             <p>
+             <p key={'el.languages.isl'}>
                Official Language :
                {el.languages.isl || 'unknown'}
              </p>
-             <p>
+             <p key={'el.population' }>
                Population :
                {el.population || 'unknown'}
              </p>
-             <p>
+             <p key={'el.timezones'}>
                Timezone :
                {el.timezones || 'unknown'}
              </p>
-             <p>
+             <p key={'el.continents'}>
                Continents :
                {el.continents || 'unknown'}
              </p>
-             <p>
-               Region :
-               {el.region || 'unknown'}
-             </p>
-             <p>
+             <p key={'el.subregion'}>
                Subregion :
                {el.subregion || 'unknown'}
              </p>
@@ -94,6 +90,7 @@ const CountryDetails = () => {
        
       </div>
       {/* <div /> */}
+      {/* <Home /> */}
     </>
   ));
 

@@ -1,9 +1,8 @@
-const filterCountry = (key) => {
-  switch (key) {
-    case '':
-      return '';
-    case 2:
-  }
-};
+const filterCountry = (obj, key) => (obj.filter(
+ (el) => (el.continents === key)));
 
-export default filterCountry;
+
+ 
+ export default filterCountry
+ 
+

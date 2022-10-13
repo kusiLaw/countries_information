@@ -4,10 +4,14 @@ import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { getCountriesData } from '../Redux/countries/countries';
 import Dropdown from './Dropdownfilter';
+import { filterByKey } from '../Redux/countries/countries';
+
+
 
 const Countries = () => {
-  const countries = useSelector((state) => state.countries.countryList);
-  const dispatch = useDispatch();
+ const dispatch = useDispatch();
+
+ let countries = useSelector((state) => state.countries.countryList)
 
   useEffect(() => {
     if (countries.length === 0) {
@@ -15,16 +19,19 @@ const Countries = () => {
     }
   }, []);
 
-  const cache = {};
-  countries.forEach((element) => {
-    cache[element.name.common.replace(/\s+/gi, '-')] = cache[element.name.common.replace(/\s+/gi, '-')] + 1 || 1;
-  });
+  // const cache = {};
+  // countries.forEach((element) => {
+  //   cache[element.name.common.replace(/\s+/gi, '-')] = cache[element.name.common.replace(/\s+/gi, '-')] + 1 || 1;
+  // });
+  const handleSortList = (e) =>{
+   let key = e.target.value
+    dispatch(filterByKey(key));
+  }
 
-  console.log(cache);
   return (
     <div className="list-container">
       <div className="drop-list">
-        <Dropdown />
+        <Dropdown handleSortList ={handleSortList} />
       </div>
       <ul className="country-list d-flex">
         {countries.map((country) => (
