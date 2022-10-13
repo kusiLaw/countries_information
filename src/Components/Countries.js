@@ -11,7 +11,10 @@ import { filterByKey } from '../Redux/countries/countries';
 const Countries = () => {
  const dispatch = useDispatch();
 
- let countries = useSelector((state) => state.countries.countryList)
+ let countries = useSelector(
+  (state) => state.countries.filteredCountries ||
+  state.countries.countryList
+  )
 
   useEffect(() => {
     if (countries.length === 0) {

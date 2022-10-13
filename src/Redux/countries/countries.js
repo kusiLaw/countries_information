@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { act } from 'react-dom/test-utils';
 
 const url = 'https://restcountries.com/v3.1/all';
 const detail_url = 'https://restcountries.com/v3.1/all';
@@ -9,7 +8,6 @@ const detail_url = 'https://restcountries.com/v3.1/all';
 const initialState = {
   countryList: [],
   searchKeys : [],
-  hasFiltered : false
 };
 
 export const getCountriesData = createAsyncThunk(
@@ -42,22 +40,18 @@ const countriesSlice = createSlice({
   initialState,
   reducers: {
    filterByKey: (state, action)=>{
-   
-
    if(action.payload !== 'DEFAULT'){
      const filteredCountries = state.countryList.filter(
      (el) => (el.region === action.payload));
      return {
-      countryList: filteredCountries,
-      main :state.countryList,
+      countryList:state.countryList,
+      filteredCountries,
       searchKeys: state.searchKeys,
-      hasFiltered: true
      }
     }
    return {
-    countryList: state.main,
+    countryList:state.countryList,
     searchKeys: state.searchKeys,
-    hasFiltered: false
    }
    }
   },
@@ -67,7 +61,6 @@ const countriesSlice = createSlice({
     (state, { payload }) => ({ 
      countryList: payload,
      searchKeys: [...new Set(payload.map((el) => (el.region)))],
-     hasFiltered : false
     })
     ,
   },

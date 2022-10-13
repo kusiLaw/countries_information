@@ -5,10 +5,7 @@ const Dropdown = ({handleSortList}) => {
   const countries = useSelector((state) => state.countries.searchKeys);
 
   const getSearchKeyList = () => {
-    // if (countries.length > 0) {
-      // // const region = ;
-      // console.log(region);
-
+  
       return (
         <select onChange={handleSortList} className="select_options">
           <option value="DEFAULT">All Countries</option>

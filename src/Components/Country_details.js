@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useSelector ,useDispatch} from 'react-redux';
 import { getCountriesData } from '../Redux/countries/countries';
 import './style/countryDetails.css'
-// import Home from './style/map';
+
+
 const CountryDetails = () => {
   const { name } = useParams();
   const countries = useSelector((state) => state.countries.countryList);
