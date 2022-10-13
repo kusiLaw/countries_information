@@ -1,94 +1,82 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector ,useDispatch} from 'react-redux';
-import { getCountriesData } from '../Redux/countries/countries';
-import './style/countryDetails.css'
-
+import { useSelector, useDispatch } from 'react-redux';
+import detail, { getDetails } from '../Redux/Details/detail';
+import './style/countryDetails.css';
 
 const CountryDetails = () => {
   const { name } = useParams();
-  const countries = useSelector((state) => state.countries.countryList);
+  const details = useSelector((state) => state.details.countryDetails);
   const dispatch = useDispatch();
-
+  // console.log(name.replace(/-+/gi, ' '))
+  console.log(details);
 
   useEffect(() => {
-   // if (countries.length === 0) {
-    dispatch(getCountriesData());
-   // }
- }, []);
+    dispatch(getDetails(name.replace(/-+/gi, ' ')));
+  }, []);
 
- const filterCountry = () => countries.filter((el) => (el.name.common.replace(/\s+/gi, '-') === name));
-
-
-  const renderDetails = () => filterCountry().map((el, index) => (
+  const renderDetails = () => details.map((el) => (
     <>
-      <div className = 'details-wrapper'>
+      <div className="details-wrapper">
         <h1>
-            {el.name.common}
+          {el.name}
+          {' '}
+          <span>
+            Official name  :
             {' '}
-            <span>
-              Official name  : {' '}
-              {el.name.official}
-            </span>
+            {' '}
+            {el.officialName}
+          </span>
         </h1>
-        <div className='details-body'>
+        <div className="details-body">
           <h2>Information</h2>
-          <div className='details-body-wrapper d-flex'>
-           <div className='details d-flex-col'>
-             <h3>Details</h3>
-             <p key={'ind'}>
-               Has independent :
-               {el.independent ? 'Yes' : 'No'}
-             </p>
-             <p key={'un'}>
-               UN member :
-               {el.unMember ? 'Yes' : 'No'}
-             </p>
-             <p key={'el.capital'}>
-               Capital City :
-               {el.capital[0] || 'unknown'}
-             </p>
-             <p key={'cur'}>
-               Currencies :
-               {el.currencies.name}
-               <span> '&quot'
-                {el.currencies.symbol}
-                '&quot'</span>
-      
-             </p>
-             <p key={'el.languages.isl'}>
-               Official Language :
-               {el.languages.isl || 'unknown'}
-             </p>
-             <p key={'el.population' }>
-               Population :
-               {el.population || 'unknown'}
-             </p>
-             <p key={'el.timezones'}>
-               Timezone :
-               {el.timezones || 'unknown'}
-             </p>
-             <p key={'el.continents'}>
-               Continents :
-               {el.continents || 'unknown'}
-             </p>
-             <p key={'el.subregion'}>
-               Subregion :
-               {el.subregion || 'unknown'}
-             </p>
+          <div className="details-body-wrapper d-flex">
+            <div className="details d-flex-col">
+              <h3>Details</h3>
+              <p key="ind">
+                Independent :
+                {el.independent ? 'Yes' : 'No'}
+              </p>
+              <p key="un">
+                UN member :
+                {el.unMember ? 'Yes' : 'No'}
+              </p>
+              <p key="el.capital">
+                Capital City :
+                {el.capital || 'unknown'}
+              </p>
+              <p key="cur">
+                Currencies :
+                {el.currencies[`${Object.keys(el.currencies)[0]}`].name}
+                <span>
+                  {' '}
+                  '&quot'
+                  {console.log(el.currencies[`${Object.keys(el.currencies)[0]}`].symbol)}
+                  '&quot'
+                </span>
 
-           </div>
-           <div className = 'flags d-flex-col'>
-           <h3>Flag</h3>
-            <img src={el.flags.svg} alt="flag" />
-           </div>
-           <div className = 'coat d-flex-col'>
-            <h3>Coat Of Arms</h3>
-            <img src={el.coatOfArms.svg} alt="coat of arms" />
-           </div>
+              </p>
+
+              <p key="el.population">
+                Population :
+                {el.population || 'unknown'}
+              </p>
+              <p key="el.timezones">
+                Timezone :
+                {el.timezones || 'unknown'}
+              </p>
+              <p key="el.continents">
+                Continents :
+                {el.continents || 'unknown'}
+              </p>
+            </div>
+            <div className="flags d-flex-col">
+              <h3>Flag</h3>
+              <img src={el.flag} alt="flag" />
+            </div>
           </div>
         </div>
-       
+
       </div>
       {/* <div /> */}
       {/* <Home /> */}
@@ -96,9 +84,9 @@ const CountryDetails = () => {
   ));
 
   return (
-    <div className='details-container'>
-      {countries && (renderDetails())}
-      {!countries && (<>Error</>)}
+    <div className="details-container">
+      {details && (renderDetails())}
+      {!details && (<>Error</>)}
     </div>
   );
 };
