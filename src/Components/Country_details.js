@@ -6,77 +6,86 @@ import './style/countryDetails.css';
 
 const CountryDetails = () => {
   const { name } = useParams();
-  const details = useSelector((state) => state.details.countryDetails);
+  let details = useSelector((state) => state.details.countryDetails);
   const dispatch = useDispatch();
   // console.log(name.replace(/-+/gi, ' '))
-  console.log(details);
+ 
 
   useEffect(() => {
     dispatch(getDetails(name.replace(/-+/gi, ' ')));
   }, []);
 
+  if(details.length > 1){
+   details =  [details[0]] //solved api inconsistent
+  }
+
   const renderDetails = () => details.map((el) => (
     <>
       <div className="details-wrapper">
-        <h1>
-          {el.name}
-          {' '}
-          <span>
-            Official name  :
-            {' '}
-            {' '}
-            {el.officialName}
-          </span>
-        </h1>
+        <div className='details-header d-flex'>
+         <div className="flags d-flex">
+            <img src={el.flag} alt="flag" />
+         </div>
+         <div className='header-wrap d-flex'>
+          <h1 >
+            {/* <span> */}
+             {el.name}
+             {' '}
+            {/* </span> */}
+            <span>
+              Official :
+              {' '}
+              {' '}
+              {el.officialName}
+            </span>
+          </h1>
+         </div>
+        </div>
         <div className="details-body">
-          <h2>Information</h2>
+          <h2>Detailed Information</h2>
           <div className="details-body-wrapper d-flex">
-            <div className="details d-flex-col">
-              <h3>Details</h3>
-              <p key="ind">
-                Independent :
-                {el.independent ? 'Yes' : 'No'}
-              </p>
-              <p key="un">
-                UN member :
-                {el.unMember ? 'Yes' : 'No'}
-              </p>
-              <p key="el.capital">
-                Capital City :
-                {el.capital || 'unknown'}
-              </p>
-              <p key="cur">
-                Currencies :
-                {el.currencies[`${Object.keys(el.currencies)[0]}`].name}
-                <span>
-                  {' '}
-                  '&quot'
-                  {console.log(el.currencies[`${Object.keys(el.currencies)[0]}`].symbol)}
-                  '&quot'
-                </span>
+            <ul className="details">
+             <li key="el.continents">
+               <p> Continents </p>
+               <p>{el.continents || 'unknown'}</p>
+             </li>
 
+              <li key="el.timezone">
+               <p> timezone </p>
+               <p>{el.timezone || 'unknown'}</p>
+              </li>
+              <li key="ind">
+               <p>Independent</p>
+               <p>{el.independent ? 'Yes' : 'No'}</p>
+              </li>
+              <li key="un">
+               <p>UN member</p>
+               <p>{el.unMember ? 'Yes' : 'No'}</p>
+              </li>
+              <li key="el.capital">
+              <p>Capital</p>
+              <p>{el.capital || 'unknown'}</p>
+              </li>
+              <li key="cur">
+              <p> Currencies</p>
+              <p>
+               {el.currencies[`${Object.keys(
+               el.currencies)[0]}`].name }
+                 {" "}
+              {el.currencies[`${Object.keys(
+               el.currencies)[0]}`].symbol 
+              }
               </p>
-
-              <p key="el.population">
-                Population :
-                {el.population || 'unknown'}
-              </p>
-              <p key="el.timezones">
-                Timezone :
-                {el.timezones || 'unknown'}
-              </p>
-              <p key="el.continents">
-                Continents :
-                {el.continents || 'unknown'}
-              </p>
-            </div>
-            <div className="flags d-flex-col">
-              <h3>Flag</h3>
-              <img src={el.flag} alt="flag" />
-            </div>
+              </li>
+             
+              <li key="el.population">
+              <p>Population </p>
+              <p>{el.population || 'unknown'}</p>
+              </li>
+             
+            </ul>
           </div>
         </div>
-
       </div>
       {/* <div /> */}
       {/* <Home /> */}
@@ -85,8 +94,7 @@ const CountryDetails = () => {
 
   return (
     <div className="details-container">
-      {details && (renderDetails())}
-      {!details && (<>Error</>)}
+      {renderDetails() || (<>Error</>)}
     </div>
   );
 };

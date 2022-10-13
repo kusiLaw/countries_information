@@ -1,11 +1,48 @@
 .details-container{
  color: white;
- padding: 2rem 5rem ;
+ padding: 2rem 2rem ;
+}
+
+
+
+.details-header {
+ border: 1px solid green;
+ justify-content: space-between;
+}
+
+.flags {
+ width: 50%;
+}
+
+.flags img,
+.coat img {
+ width: 100%;
+ height: 12rem
+}
+
+.details-header{
+ gap: 5%;
+}
+
+.header-wrap{
+ justify-items: end;
+ align-items: flex-end;
+ margin-right: 0.5rem;
+}
+
+
+.header-wrap h1{
+ display: inline-block;
 }
 
 .d-flex-col{
  display: flex;
  flex-direction: column;
+}
+
+h1{
+  font-size: 2.6rem;
+  font-weight: 900;
 }
 
 h1 span{
@@ -22,6 +59,7 @@ h2, h3{
 
 h2{
  font-weight: 600;
+ font-size: 2rem;
 }
 
 h3 {
@@ -29,39 +67,58 @@ h3 {
  margin-bottom: 2rem;
 }
 
+.details-body{
+ padding-top: 1rem;
+}
+
+
 .details-body-wrapper{
  width: 100%;
- flex: 1 1 30%;
- flex-wrap: wrap;
- gap: 3.3%;
- border: 1px solid;
 }
 
 .details{
- width: 30%;
+ list-style-type: none;
+ width: 100%;
 }
 
-.flags{
- width: 30%;
+ul.details li{
+ display: flex;
+ justify-content: space-between;
+ border: 1px solid red;
+ width: 100%;
+ padding: 2rem;
 }
 
-.coat{
- width: 30%;
+ul.details li:nth-child(even){
+ background-color: var(--primary-dark-color);
+
 }
 
-.flags img,
+ul.details li:nth-child(odd){
+ background-color: var(--primary-light-color);
+
+}
+
+@media screen and (min-width: 768px) {
+ .header-wrap{
+  margin-right: 2rem;
+ }
+ 
+ .details-container{
+  padding: 2rem 6rem ;
+ }
+
+ .flags{
+  width: 40%;
+ }
+
+ .details-header{
+  gap: 10%;
+ }
+
+ .flags img,
 .coat img{
  width: 100%;
- height: 60%;
+ height: 20rem
 }
-
-/* .flags{
- width: 50%;
- flex: 1 1 0;
 }
-
-
-.details-countainer{
- width: 100%;
- padding: 3rem;
-} */
