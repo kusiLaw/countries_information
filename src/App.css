@@ -32,7 +32,7 @@ body {
 }
 
 .list-container{
- padding: 2rem 4rem;
+ padding: 0.2rem ;
 }
 
 .drop-list{
@@ -41,18 +41,21 @@ margin-left: 2rem;
 
 .select_options{
  padding: 0.5rem 4rem;
-
-
 }
+
+
+
 .select_options,option{
 color: white;
 background-color:var(--primary-light-color) ;
-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;}
+box-shadow: rgba(50, 50, 93, 0.25)
+ 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
 
 .country-list{
  flex-wrap: wrap;
  flex: 1 1 50%;
- padding: 2rem;
+ padding: 2rem 0.5rem;
  list-style-type: none;
  color: white;
 }
@@ -61,6 +64,26 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
  justify-content: end;
  padding-right: 1rem;
 }
+.flag-wrap{
+ position: relative;
+ display: flex;
+ justify-content: end;
+
+}
+.cover{
+ position: absolute;
+ background-image: linear-gradient(to bottom,
+ rgba(219, 70, 129, 0.3), rgba(208, 67, 121, 0.3));
+ z-index: 100;
+ height: 100%;
+ width: 100%;
+}
+
+.flag-img{
+ width: 100%;
+ height: 10rem;
+ }
+
 
 .country-list li{
  /* border: 1px solid red; */
@@ -77,9 +100,10 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
 .list-body {
  flex-direction: column;
  margin-top:1rem ;
- gap: 1rem;
-  font-style: italic;
+  /* font-style: italic; */
   font-size: small;
+  flex-direction: column;
+  align-items: flex-end;
  }
 
  .list-header{
@@ -87,4 +111,45 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8p
   gap: 1rem;
  }
 
+ .links{
+  color: white;
+ }
+
+ @media screen and (min-width: 768px) {
+  .country-list{
+   flex: 1 1 33%;
+   padding: 2rem;
+  }
+  .flag-img{
+   width: 100%;
+   height: 15rem;
+   }
+
+  .country-list li{
+   /* border: 1px solid red; */
+   flex-direction: column;
+   width: 33%;
+   padding: 2%;
+  }
+  
+  .list-container{
+   padding: 2rem 4rem;
+  }
+  
+  .drop-list{
+  margin-left: 2rem;
+  }
+  
+  .select_options{
+   padding: 0.5rem 4rem;
+  }
+
+
+  .country-list li:nth-child(even){
+  background-color: var(--primary-dark-color);
+ }
+ .country-list li:nth-child(odd){
+  background-color: var(--primary-light-color);
+ }
+ }
 

@@ -38,23 +38,22 @@ const Countries = () => {
           <li className="d-flex" key={country.name.common.replace(/\s+/gi, '-')}>
             <div className="list-header d-flex">
               <div className="arrow-link d-flex">
-                <Link to={`/countries/${country.name.common.replace(/\s+/gi, '-')}/details`}>
+                <Link className='links' to={`/countries/${country.name.common.replace(/\s+/gi, '-')}/details`}>
                   <FaArrowAltCircleRight />
                 </Link>
               </div>
-              <h2>
-                {country.name.common}
-                {' '}
-                <span>{country.flag}</span>
-              </h2>
+              <div className='flag-wrap'>
+               <div className='cover'></div>
+               <img className='flag-img' src={`${country.flags.svg}`} alt='flag' />
+              </div>
+              
             </div>
-            <div className="list-body">
+            <div className="list-body d-flex">
+            <h2>
+                {country.name.common}
+              </h2>
               <p>
-                Capital:
-                {country.capital}
-              </p>
-              <p>
-                Population:
+                Pop :
                 {country.population}
               </p>
             </div>
