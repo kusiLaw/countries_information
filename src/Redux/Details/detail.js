@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+// eslint-disable-next-line
 import axios from 'axios';
 
 const detailsUrl = 'https://restcountries.com/v2/name/';

@@ -6,7 +6,7 @@ const initialState = {
 
 export const getDetails = createAsyncThunk(
   'countries/getDetailsData',
-  async (name) => ({
+  async () => ({
     name: 'Ghana',
     capital: 'Accra',
     timezone: 'UTC+00',

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Dropdown = ({ handleSortList }) => {
   const countries = useSelector((state) => state.countries.searchKeys);
@@ -20,6 +21,10 @@ const Dropdown = ({ handleSortList }) => {
       {getSearchKeyList()}
     </div>
   );
+};
+
+Dropdown.propTypes = {
+  handleSortList: PropTypes.func.isRequired,
 };
 
 export default Dropdown;
