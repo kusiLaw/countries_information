@@ -13,12 +13,12 @@ Countries Information is a simple react capstone project that displays informati
 - Redux
 
 
-## Live Demo (if available)
+## Live Demo 
 
-[link](mellifluous-begonia-3df97c.netlify.app)
+[link](https://github.com/kusiLaw/countries_information/blob/countries/mellifluous-begonia-3df97c.netlify.app)
 
 ## Live Presentation
-[live](https://www.loom.com/share/7de1bbc72fe1401fb4bcb0e4a753e485)
+[live](https://www.loom.com/share/eed187b145ee470aa99d3e22f185f6e6)
 
 ## Getting Started
 
