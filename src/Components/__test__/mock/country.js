@@ -1,7 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const url = 'https://restcountries.com/v3.1/all';
 
 const initialState = {
   countryList: [],
@@ -10,14 +7,11 @@ const initialState = {
 
 export const getCountriesData = createAsyncThunk(
   'countries/countriesData',
-  async () => {
-    try {
-      const response = await axios.get(`${url}`);
-      return response.data;
-    } catch (error) {
-      return error;
-    }
-  },
+  async () => ({
+    name: 'Ghana',
+    flag: 'flag.png',
+    population: '32100',
+  }),
 );
 
 const countriesSlice = createSlice({
@@ -45,14 +39,9 @@ const countriesSlice = createSlice({
   extraReducers: {
     [getCountriesData.fulfilled]:
     (state, { payload }) => ({
-      countryList: payload.map((el) => ({
-        name: el.name.common,
-        flag: el.flags.svg,
-        population: el.population,
-        region: el.region,
-      })),
-
-      searchKeys: [...new Set(payload.map((el) => (el.region)))],
+      countryList: payload,
+      searchKeys: ['all', 'Asia', 'Africa',
+        'America', 'Europe', 'Oceania'],
     })
     ,
   },

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check if the component has changed 1`] = `
+<div
+  className="list-container"
+  data-testid="listContainer"
+>
+  <div
+    className="drop-list"
+  >
+    <div>
+      <select
+        className="select_options"
+        onChange={[Function]}
+      >
+        <option
+          value="DEFAULT"
+        >
+          All Countries
+        </option>
+      </select>
+    </div>
+  </div>
+  <ul
+    className="country-list d-flex"
+  />
+</div>
+`;
