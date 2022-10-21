@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDetails } from '../Redux/Details/detail';
 import './style/countryDetails.css';
+import load from '../assert/loading.gif';
 
 const CountryDetails = () => {
   const { name } = useParams();
   let details = useSelector((state) => state.details.countryDetails);
+  const Loading = useSelector((state) => state.details.Loading);
   const dispatch = useDispatch();
   // console.log(name.replace(/-+/gi, ' '))
 
@@ -16,6 +18,14 @@ const CountryDetails = () => {
 
   if (details.length > 1) {
     details = [details[0]]; // solved api inconsistent
+  }
+
+  if (Loading) {
+    return (
+      <div className="loading d-flex">
+        <img src={load} alt="loading" />
+      </div>
+    );
   }
 
   const renderDetails = () => details.map((el) => (

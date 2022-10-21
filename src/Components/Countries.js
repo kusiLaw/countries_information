@@ -4,7 +4,7 @@ import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { getCountriesData, filterByKey } from '../Redux/countries/countries';
 import Dropdown from './Dropdownfilter';
-import logo from '../assert/loading.gif';
+import load from '../assert/loading.gif';
 
 const Countries = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Countries = () => {
   if (Loading) {
     return (
       <div className="loading d-flex">
-        <img src={logo} alt="loading" />
+        <img src={load} alt="loading" />
       </div>
     );
   }

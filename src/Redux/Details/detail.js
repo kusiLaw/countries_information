@@ -6,6 +6,7 @@ const detailsUrl = 'https://restcountries.com/v2/name/';
 
 const initialState = {
   countryDetails: [],
+  Loading: false,
 };
 
 export const getDetails = createAsyncThunk(
@@ -42,8 +43,13 @@ const detailsSlice = createSlice({
         currencies: el.currencies,
 
       })),
-
+      Loading: false,
     }),
+
+    [getDetails.pending]: (() => ({
+      countryDetails: [],
+      Loading: true,
+    })),
   },
 });
 
