@@ -4,6 +4,7 @@ import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { getCountriesData, filterByKey } from '../Redux/countries/countries';
 import Dropdown from './Dropdownfilter';
+import load from '../assert/loading.gif';
 
 const Countries = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,10 @@ const Countries = () => {
   const countries = useSelector(
     (state) => state.countries.filteredCountries
   || state.countries.countryList,
+  );
+
+  const Loading = useSelector(
+    (state) => state.countries.Loading,
   );
 
   useEffect(() => {
@@ -23,6 +28,14 @@ const Countries = () => {
     const key = e.target.value;
     dispatch(filterByKey(key));
   };
+
+  if (Loading) {
+    return (
+      <div className="loading d-flex">
+        <img src={load} alt="loading" />
+      </div>
+    );
+  }
 
   return (
     <div className="list-container" data-testid="listContainer">

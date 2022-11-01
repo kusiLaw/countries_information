@@ -7,6 +7,7 @@ const url = 'https://restcountries.com/v3.1/all';
 const initialState = {
   countryList: [],
   searchKeys: [],
+  Loading: false,
 };
 
 export const getCountriesData = createAsyncThunk(
@@ -54,8 +55,15 @@ const countriesSlice = createSlice({
       })),
 
       searchKeys: [...new Set(payload.map((el) => (el.region)))],
-    })
-    ,
+      Loading: false,
+    }),
+
+    [getCountriesData.pending]: (() => ({
+      countryList: [],
+      searchKeys: [],
+      Loading: true,
+    })),
+
   },
 });
 

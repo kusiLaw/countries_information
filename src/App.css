@@ -143,7 +143,29 @@ li:nth-child(4n+2) {
   color: white;
 }
 
+.loading {
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 50vh;
+}
+
+.loading img {
+  justify-self: center;
+  align-self: center;
+  width: 30%;
+  height: auto;
+}
+
 @media screen and (min-width: 768px) {
+  .loading {
+    height: 80vh;
+  }
+
+  .loading img {
+    width: 20%;
+  }
+
   .country-list {
     flex: 1 1 33%;
     padding: 2rem;
